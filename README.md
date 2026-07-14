@@ -9,8 +9,7 @@ This project reverse-engineers black-box thermal rating software by isolating in
 ## 🏗 Development Roadmap
 
 - [x] **Phase 1: Thermal Conditions & Air Properties Engine** - [ ] **Phase 2: Tower Geometry & Air Inlet Aerodynamics**
-- [ ] **Phase 3: Heat Transfer Core (Fill & Rain Zones)**
-- [ ] **Phase 4: Plenum, Eliminators & Fan Mechanics**
+- [x] **Phase 4: Plenum, Eliminators & Fan Mechanics**
 - [ ] **Phase 5: Iterative System Solver & Merkel Integration**
 - [ ] **Phase 6: Web UI Dashboard Deployment**
 
