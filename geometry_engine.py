@@ -76,3 +76,24 @@ def run_phase_2(
     
     # Combine results into a unified dictionary
     return {**geom_results, **aero_results}
+  
+def calculate_fan_box_geometry(cell_length_ft: float, cell_width_ft: float, fan_diameter_ft: float, tip_clearance_in: float) -> dict:
+    """Computes fan stack opening and fan-to-box plan area ratio."""
+    # 1. Total cell plan area
+    cell_plan_area_ft2 = cell_length_ft * cell_width_ft
+    
+    # 2. Plenum hole diameter (Fan diameter + tip clearance on both sides)
+    plenum_hole_dia_ft = fan_diameter_ft + (2.0 * (tip_clearance_in / 12.0))
+    
+    # 3. Stack exit net area (circle area = pi / 4 * D^2)
+    stack_exit_area_ft2 = (math.pi / 4.0) * math.pow(plenum_hole_dia_ft, 2)
+    
+    # 4. Fan to Box Ratio (%)
+    fan_to_box_ratio = (stack_exit_area_ft2 / cell_plan_area_ft2) * 100.0
+    
+    return {
+        "cell_plan_area_ft2": round(cell_plan_area_ft2, 1),
+        "plenum_hole_dia_ft": round(plenum_hole_dia_ft, 2),
+        "stack_exit_area_ft2": round(stack_exit_area_ft2, 1),
+        "fan_to_box_ratio_pct": round(fan_to_box_ratio, 1)
+    }
